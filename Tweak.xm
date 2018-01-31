@@ -15,13 +15,6 @@ long _homeButtonType = 1;
 }
 %end
 
-// Hide home bar
-%hook MTLumaDodgePillView
-- (id)initWithFrame:(struct CGRect)arg1 {
-	return NULL;
-}
-%end
-
 // Workaround for TouchID respring bug
 %hook SBCoverSheetSlidingViewController
 - (void)_finishTransitionToPresented:(_Bool)arg1 animated:(_Bool)arg2 withCompletion:(id)arg3 {
@@ -60,12 +53,6 @@ long _homeButtonType = 1;
 %hook CCUIModularControlCenterOverlayViewController
 - (void)setOverlayStatusBarHidden:(bool)arg1 {
 	return;
-}
-%end
-// Prevent status bar from displaying in fullscreen when invoking control center
-%hook CCUIStatusBarStyleSnapshot
-- (bool)isHidden {
-	return YES;
 }
 %end
 
